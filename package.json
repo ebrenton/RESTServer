@@ -1,0 +1,9 @@
+{
+  "name": "www-server",
+  "version": "0.0.0",
+  "description": "wwwServer",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}

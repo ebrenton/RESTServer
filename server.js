@@ -1,23 +1,62 @@
 'use strict';
-var http = require('http');
-var fs = require('fs');
-var path = require('path');
+const http = require('http');
+const url = require('url');
+const fs = require('fs');
+const path = require('path');
 
 var port = process.env.PORT || 8080;
 
 //include all files in the api folder
-//each file should have one main function that is the same as the file name
-var requireDir = require('require-dir');
-var dir = requireDir('./api', { recurse: true });
+
+//var requireDir = require('require-dir');
+//var dir = requireDir('./api', { recurse: true });
 
 http.createServer(function (request, response) {
     console.log('request ', request.url);
 
-    //if (slice(0, 4, request.url.toLowerCase()) === '/api') {
-    //    response.writeHead(200, { 'Content-Type:': "text/html" });
-    //    response.write('api Test');
-    //    response.end(content, 'utf-8');
-    //} else {
+    if (request.url.toLowerCase().substr(0, 4) === '/api') {
+
+        var url_parts = url.parse(request.url, true);
+        var query = url_parts.query;
+        var pathname = url_parts.pathname;
+        var apiMod = null;
+
+        try {
+            var apiMod = require('.' + pathname + '.js');
+        } catch(ex){
+            response.writeHead(200, { "Content-Type": "text/html" });
+            response.end('error loading api module:' + pathname + '<br />', 'utf-8')
+            apiMod = null;
+        }
+
+        if (!(apiMod === null)) {
+            //apiMod.info(response, query, 'sample text', function (newVal) { console.log(newVal) });
+            apiMod(response, query, 'sample text', function (res, err) {
+
+                response.writeHead(200, { "Content-Type": "text/html" });
+
+                if (err) {
+                    console.log('error');
+                } else {
+                    console.log('ok');
+                    console.log(res);
+                    response.write('api Test<br />' + res);
+                }
+
+                response.end();
+            });
+
+            console.log('async test: past the funct call');
+
+            //response.writeHead(200, { "Content-Type": "text/html" });
+            //response.write('api Test<br />');
+            //response.write('query = ' + JSON.stringify(query) + '<br />');
+            //response.write('pathname = ' + pathname + '<br />');
+            //response.write('api meth = ' + query.meth + '<br />')
+            //response.write('request.method = ' + request.method + '<br />')
+            //response.end();
+        }
+    } else {
 
         var filePath = 'www' + request.url;
         if (filePath === 'www/') {
@@ -63,7 +102,7 @@ http.createServer(function (request, response) {
                 response.end(content, 'utf-8');
             }
         });
-    //}
+    }
 
 }).listen(port);
 console.log('Server running on port ' + port);

@@ -1,9 +1,15 @@
 'use strict';
 
-function test() {
+var test = {
+    info: function (info) {
+        console.log('Info: ' + info);
+    },
+    warning: function (warning) {
+        console.log('Warning: ' + warning);
+    },
+    error: function (error) {
+        console.log('Error: ' + error);
+    }
+};
 
-    return 'adsf';
-
-}
-
-module.exports = test;
+module.exports = test

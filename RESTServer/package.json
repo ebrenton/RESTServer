@@ -1,0 +1,9 @@
+{
+  "name": "restserver",
+  "version": "0.0.0",
+  "description": "RESTServer",
+  "main": "server.js",
+  "author": {
+    "name": ""
+  }
+}

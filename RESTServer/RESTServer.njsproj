@@ -33,7 +33,6 @@
     <Compile Include="server.js" />
     <Compile Include="www\test\myTest.js" />
     <Content Include="package.json" />
-    <Content Include="README.md" />
     <Content Include="www\images\chips.jpg" />
     <Content Include="www\index.html" />
     <Content Include="www\test\myTest.html" />

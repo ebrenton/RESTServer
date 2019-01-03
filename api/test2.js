@@ -17,7 +17,7 @@ function test(query, callback) {
 
     var p1 = query['p1'];
 
-    retObj.result = p1.toUpperCase();
+    retObj.result = p1.toLowerCase();
     retObj.resultNotes = 'You sent in ' + p1 + ' and the api changed it to ' + p1.toLowerCase();
 
     callback(false, retObj);

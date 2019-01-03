@@ -7,6 +7,12 @@
 *.userosscache
 *.sln.docstates
 
+# VS priject files [EHB Added]
+*.sln
+*.njsproj
+*.vbproj
+.vs/
+
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
 
@@ -259,3 +265,4 @@ paket-files/
 # Python Tools for Visual Studio (PTVS)
 __pycache__/
 *.pyc
+

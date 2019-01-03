@@ -60,9 +60,9 @@ http.createServer(function (request, response) {
         }
     } else {
 
-        var filePath = 'www' + request.url;
-        if (filePath === 'www/') {
-            filePath = 'www/index.html';
+        var filePath = './www' + request.url;
+        if (filePath === './www/') {
+            filePath = './www/index.html';
         }
         console.log(filePath);
         var extname = String(path.extname(filePath)).toLowerCase();

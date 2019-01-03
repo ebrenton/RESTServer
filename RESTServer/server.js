@@ -22,7 +22,7 @@ http.createServer(function (request, response) {
         var apiMod = null;
 
         try {
-            var apiMod = require('.' + pathname + '.js');
+            apiMod = require('.' + pathname + '.js');
         } catch(ex){
             response.writeHead(200, { "Content-Type": "text/html" });
             response.end('error loading api module:' + pathname + '<br />', 'utf-8')
@@ -87,7 +87,7 @@ http.createServer(function (request, response) {
 
         fs.readFile(filePath, function (error, content) {
             if (error) {
-                if (error.code == 'ENOENT') {
+                if (error.code === 'ENOENT') {
                     fs.readFile('./404.html', function (error, content) {
                         response.writeHead(200, { 'Content-Type': contentType });
                         response.end(content, 'utf-8');

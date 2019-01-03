@@ -29,9 +29,21 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="api\test.js" />
     <Compile Include="server.js" />
+    <Compile Include="www\test\myTest.js" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="www\images\chips.jpg" />
+    <Content Include="www\index.html" />
+    <Content Include="www\test\myTest.html" />
+    <Content Include="www\test\RESTTest.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="api\" />
+    <Folder Include="www\" />
+    <Folder Include="www\images\" />
+    <Folder Include="www\test\" />
   </ItemGroup>
   <!-- Do not delete the following Import Project.  While this appears to do nothing it is a marker for setting TypeScript properties before our import that depends on them. -->
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="False" />

@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>A static page that gets some data via ajax</title>
+
+    <script type="text/javascript">
+        function testREST(){
+
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4) {
+                    if (this.status == 200) {
+                        document.getElementById('responseText').innerHTML = this.responseText;
+                        jResp = JSON.parse(this.responseText)
+                        document.getElementById('results').value = jResp.result;
+                    } else {
+                        document.getElementById('responseText').innerHTML = 'error getting ajax'
+                    }
+                }
+            }
+            
+            xhttp.open("GET", "/api/test?p1=" + decodeURIComponent(document.getElementById('p1').value), true);
+            xhttp.send();
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="p1" value="some text" />
+    <input type="button" id="testButon" value="test REST" onclick="testREST()" /><br />
+    <input type="text" id="results" value="" /><br />
+    <br />
+    responseText:<div id="responseText" style="border:1px solid black">&nbsp;</div>
+</body>
+</html>

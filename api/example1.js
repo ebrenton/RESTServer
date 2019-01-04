@@ -1,4 +1,4 @@
-function test(query, callback) {
+module.exports = function (query, callback) {
 
     var retObj = {
         "params": [],
@@ -7,12 +7,12 @@ function test(query, callback) {
             { "firstName": "Anna", "lastName": "Smith" },
             { "firstName": "Peter", "lastName": "Jones" }
         ],
-        "result":""
+        "result": ""
     }
 
     //show the parameters that were passed in the results
     for (var param in query) {
-        retObj.params.push({ "paramName": param, "paramValue": query[param]});
+        retObj.params.push({ "paramName": param, "paramValue": query[param] });
     }
 
     var p1 = query['p1'];
@@ -24,6 +24,5 @@ function test(query, callback) {
 
     //test async
     //process.nextTick(function () { callback(txt + ':edited', false); });
-}
 
-module.exports = test;
+};

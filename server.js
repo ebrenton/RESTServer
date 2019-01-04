@@ -66,6 +66,10 @@ http.createServer(function (request, response) {
         }
         console.log(filePath);
         var extname = String(path.extname(filePath)).toLowerCase();
+
+        //test
+        console.log(path.resolve(filePath));
+
         var mimeTypes = {
             '.html': 'text/html',
             '.js': 'text/javascript',

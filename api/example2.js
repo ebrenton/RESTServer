@@ -1,4 +1,4 @@
-function test(query, callback) {
+module.exports = function (query, callback) {
 
     var retObj = {
         "params": [],
@@ -17,13 +17,12 @@ function test(query, callback) {
 
     var p1 = query['p1'];
 
-    retObj.result = p1.toLowerCase();
-    retObj.resultNotes = 'You sent in ' + p1 + ' and the api changed it to ' + p1.toLowerCase();
+    retObj.result = p1.toUpperCase();
+    retObj.resultNotes = 'You sent in ' + p1 + ' and the api changed it to ' + p1.toUpperCase();
 
-    callback(false, retObj);
+    callback(false, retObj)
 
     //test async
     //process.nextTick(function () { callback(txt + ':edited', false); });
-}
 
-module.exports = test;
+};
